@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Question</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      position: relative;
+      width: 300px;
+      height: 200px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #yes {
+      margin-right: 20px;
+    }
+
+    #no {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Do you agree?</h1>
+
+  <div class="buttons">
+    <button id="yes" onclick="alert('Correct answer 😌')">Yes</button>
+    <button id="no">No</button>
+  </div>
+
+  <script>
+    const noButton = document.getElementById("no");
+    const container = document.querySelector(".buttons");
+
+    noButton.addEventListener("mouseenter", () => {
+      const containerRect = container.getBoundingClientRect();
+      const buttonRect = noButton.getBoundingClientRect();
+
+      const maxX = containerRect.width - buttonRect.width;
+      const maxY = containerRect.height - buttonRect.height;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noButton.style.left = `${randomX}px`;
+      noButton.style.top = `${randomY}px`;
+    });
+  </script>
+
+</body>
+</html>
